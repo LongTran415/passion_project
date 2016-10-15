@@ -23,6 +23,8 @@ require "sinatra/reloader" if development?
 require 'erb'
 require 'faker'
 
+require 'paperclip'
+
 # Some helper constants for path-centric logic
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
 
@@ -46,3 +48,36 @@ Dir[APP_ROOT.join('app', 'helpers', '*.rb')].each { |file| require file }
 
 # Set up the database and models
 require APP_ROOT.join('config', 'database')
+
+
+#
+# https://github.com/thoughtbot/paperclip/issues/1378
+#
+module Paperclip
+  class SinatraFileAdapter < AbstractAdapter
+
+    def initialize(target)
+      @target = target[:tempfile]
+      cache_current_values(target)
+    end
+
+    private
+
+    def cache_current_values(target)
+      self.original_filename = target[:filename]
+      self.original_filename ||= File.basename(@target.path)
+      @tempfile = copy_to_tempfile(@target)
+      @content_type = Paperclip::ContentTypeDetector.new(@target.path).detect
+      @size = File.size(@target)
+    end
+
+  end
+end
+
+Paperclip.io_adapters.register Paperclip::SinatraFileAdapter do |target|
+  begin
+   target.is_a?(Hash) && Tempfile === target[:tempfile]
+  rescue => e
+    false
+  end
+end

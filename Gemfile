@@ -18,6 +18,9 @@ gem 'pry'
 
 gem 'faker'
 
+gem "paperclip", "~> 5.0.0"
+
+
 group :test do
   gem 'shoulda-matchers'
   gem 'rack-test'
