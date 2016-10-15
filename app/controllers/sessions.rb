@@ -4,7 +4,6 @@ end
 
 post '/sessions' do
   @user = User.find_by_email(params[:email])
-  # binding.pry
   if @user && @user.password == params[:password]
 
     login(@user)
