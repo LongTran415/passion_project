@@ -1,4 +1,4 @@
-<h1>Add A Portfolio:</h1>
+<h1>Add a portfolio:</h1>
 
 <div id="form-container">
   <form id="porfolio-form" method="post" action="/portfolios">
@@ -10,5 +10,14 @@
 </div>
 
 <p>
-  <h2>Images:</h2>
+  <h2>collection:</h2>
+  <ul>
+    <% @portfolios.each do |portfolio|%>
+      <a href="/portfolios/<%= portfolio.id %>"><li><%= portfolio.title %></li></a>
+      <form action="/portfolios/<%= portfolio.id%>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="delete">
+      </form>
+    <% end %>
+  </u>
 </p>

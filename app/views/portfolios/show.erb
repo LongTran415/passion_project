@@ -1,3 +1,9 @@
-<h1><%= @portfolio.username %>'s Portfolios</h1>
+<h1>Title: <%= @portfolio.title %></h1>
 
-<h2><a href="/portfolios/<%= @portfolio.id %>/edit">Edit this portfoilo</a></h2>
+<h3><a href="/portfolios/<%= @portfolio.id %>/edit">Edit this portfoilo</a></h3>
+
+<div id="image-container">
+  <% @portfolio.images.each do |image| %>
+    <a href="/images/<%= image.id %>"><img src='<%= image.data.url(:medium) %>'></a>
+  <% end %>
+</div>
