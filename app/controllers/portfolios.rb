@@ -3,7 +3,7 @@ get '/portfolios/' do
 end
 
 get '/portfolios/new' do
-  @portfolios = Portfolio.all
+  @portfolio = Portfolio.new(user_id: current_user.id)
   erb :'/portfolios/new'
 end
 

@@ -12,7 +12,7 @@
 <p>
   <h2>collection:</h2>
   <ul>
-    <% @portfolios.each do |portfolio|%>
+    <% @portfolio.user.portfolios.each do |portfolio|%>
       <a href="/portfolios/<%= portfolio.id %>"><li><%= portfolio.title %></li></a>
       <form action="/portfolios/<%= portfolio.id%>" method="post">
         <input type="hidden" name="_method" value="delete">

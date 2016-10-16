@@ -28,7 +28,7 @@ post '/users' do
     @errors = ["Passwords do not match!"]
     erb :'users/new'
   end
-  
+
 end
 
 # USERS SHOW
@@ -57,4 +57,10 @@ delete '/users/:id' do
   @user = User.find(params[:id])
   @user.destroy
   redirect "/users"
+end
+
+# GET users portfolios
+get '/users/:id/portfolios' do
+  @user = User.find(params[:id])
+  erb :"users/portfolios/index"
 end
