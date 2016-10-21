@@ -1,7 +1,3 @@
-get '/portfolios/' do
-  erb :'portfolios/show'
-end
-
 get '/portfolios/new' do
   @portfolio = Portfolio.new(user_id: current_user.id)
   erb :'/portfolios/new'
@@ -27,8 +23,4 @@ delete '/portfolios/:id' do
   @portfolio.destroy
 
   redirect "/portfolios/new"
-end
-
-get '/portfolios' do
-  erb :index
 end
