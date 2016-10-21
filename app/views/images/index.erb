@@ -1,4 +1,11 @@
-<h1>images here!!!!!</h1>
+<h3>browse images by tag name:</h3>
+<div>
+  <form action="/images" method="get">
+    <input type="text" name="query" id="tag-search" size="20" value="">
+    <input type="submit" value="Search">
+    <input type="hidden" name="search" value="1">
+  </form>
+</div>
 
 <ul>
   <% @images.each do |image| %>

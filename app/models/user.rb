@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
   has_many :portfolios
   has_many :comments
-
+  
   def password
     @password ||= BCrypt::Password.new(password_hash)
   end
