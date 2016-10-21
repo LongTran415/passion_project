@@ -13,5 +13,5 @@ class Image < ActiveRecord::Base
 
   belongs_to :portfolio
   has_many :comments
-  has_many :tags 
+  has_many :tags, through: :imagetags, foreign_key: "tag_id", class_name: 'Tag'
 end

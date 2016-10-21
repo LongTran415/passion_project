@@ -19,3 +19,8 @@ delete '/images/:id' do
 
   redirect "/portfolios/#{@image.portfolio.id}/edit"
 end
+
+post '/images/:id' do
+  @image = Image.find(params[:id])
+  redirect "/portfolios/#{@image.portfolio.id}/edit"
+end
