@@ -1,9 +1,11 @@
-<% if current_user %>
-<h1>Welcome!</h1>
-  <h2><%= current_user.username %>'s portfolio menu:</h2>
-<ul>
-  <li><a href="/portfolios/new">Add a Portfolio</a></li>
-  <li><a href="/users/<%= current_user.id %>/portfolios">View My Portfolios</a></li>
-  <li><a href="/images">Browse Images</a></li>
-</ul>
-<% end %>
+<div id='users-show'>
+  <% if current_user %>
+  <h1>Welcome!</h1>
+    <h2><%= current_user.username %>'s folio options</h2>
+  <ul>
+    <li class='new'><a href="/portfolios/new">Add a Portfolio</a></li>
+    <li class='view'><a href="/users/<%= current_user.id %>/portfolios">View My Portfolios</a></li>
+    <li class='browse'><a href="/images">Browse Images</a></li>
+  </ul>
+  <% end %>
+</div>

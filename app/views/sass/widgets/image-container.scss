@@ -1,0 +1,25 @@
+$image-margin: 4em;
+$image-border: 5px solid white;
+$image-box-shadow: 1px 1px 20px #000;
+$image-width: 30em;
+
+#image-container {
+  @include display(flex);
+  @include flex-direction(column);
+  @include align-self(stretch);
+  @include align-items(center);
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  a {
+    border: $image-border;
+    margin-bottom: $image-margin;
+    box-shadow: $image-box-shadow;
+    width: $image-width;
+
+    &:nth-child(2n) {
+      @include transform(rotate(5deg));
+    }
+  }
+}

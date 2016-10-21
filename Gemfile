@@ -20,6 +20,9 @@ gem 'faker'
 
 gem "paperclip", "~> 5.0.0"
 
+gem 'sass'
+gem 'bourbon'
+
 
 group :test do
   gem 'shoulda-matchers'

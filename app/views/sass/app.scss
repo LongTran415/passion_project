@@ -1,0 +1,12 @@
+@import "vendor/index";
+@import "widgets/index";
+@import "views/index";
+
+html,
+body {
+  font-family: 'San Francisco Text';
+  font-weight: 400;
+  font-size: 10px;
+  width: 100vw;
+  height: 100vh;
+}

@@ -1,8 +1,8 @@
 <% if current_user %>
-  <a href="/users/<%= current_user.id %> ">home</a>
+  <a class='logo' href="/users/<%= current_user.id %> ">feature<light>folio</light></a>
   <form action="/sessions" method="POST">
     <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Logout">
+    <button>Logout</button>
   </form>
 <% else %>
   <a href="/sessions/new">Login</a>

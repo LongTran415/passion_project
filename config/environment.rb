@@ -24,6 +24,7 @@ require 'erb'
 require 'faker'
 
 require 'paperclip'
+require 'sass'
 
 # Some helper constants for path-centric logic
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
@@ -40,11 +41,20 @@ configure do
 
   # Set the views to
   set :views, File.join(Sinatra::Application.root, "app", "views")
+
+  # Configure SCSS
+  set :scss, {:style => :compressed, :debug_info => false}
 end
 
 # Set up the controllers and helpers
 Dir[APP_ROOT.join('app', 'controllers', '*.rb')].each { |file| require file }
 Dir[APP_ROOT.join('app', 'helpers', '*.rb')].each { |file| require file }
+
+# Set up the scss route
+get '/css/:name.css' do |name|
+  content_type :css
+  scss "sass/#{name}".to_sym, layout: false
+end
 
 # Set up the database and models
 require APP_ROOT.join('config', 'database')
