@@ -1,0 +1,60 @@
+// App bar
+//
+$padding: 1em;
+$background-color: #031634;
+$bottom-border: 1px solid #033649;
+$font-family: "San Francisco Display";
+
+// Logo
+//
+$logo-color: #036564;
+$logo-second-color: #e8ddcb;
+$logo-font-size: 2.4em;
+
+// Logout
+//
+$logout-color: #036564;
+$logout-hover-color: #cdb380;
+$logout-font-size: 1.8em;
+$logout-font-weight: 200;
+
+.app-bar {
+  @include display(flex);
+  padding: $padding;
+  border-bottom: $bottom-border;
+  background: $background-color;
+  font-family: $font-family;
+
+  .logo {
+    @include flex(1);
+    @include transition(.2s ease-in-out color);
+    color: $logo-color;
+    font-weight: 200;
+    font-size: $logo-font-size;
+    text-decoration: none;
+
+    light {
+      color: $logo-second-color;
+    }
+
+    &:hover {
+      color: $logout-hover-color;
+    }
+  }
+
+  button {
+    @include appearance(none);
+    @include user-select(none);
+    @include transition(.2s ease-in-out color);
+    outline: 0;
+    border: 0;
+    background: transparent;
+    color: $logout-color;
+    font-size: $logout-font-size;
+    font-weight: $logout-font-weight;
+
+    &:hover {
+      color: $logout-hover-color;
+    }
+  }
+}

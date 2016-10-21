@@ -1,0 +1,8 @@
+@import "users/show";
+@import "portfolios/show";
+
+body {
+  @include display(flex);
+  @include flex-direction(column);
+  background: lighten(#e8ddcb, 10%);
+}
