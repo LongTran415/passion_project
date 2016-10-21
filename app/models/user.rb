@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
 
   has_many :portfolios
-  
+  has_many :comments
+
   def password
     @password ||= BCrypt::Password.new(password_hash)
   end
@@ -17,8 +18,6 @@ class User < ActiveRecord::Base
     self.password_hash = @password
   end
 
-  # can change params as needed
-  # feel free to refactor this
   def authenticate?(email, txt_password)
     self.email == email && self.password == txt_password
   end
